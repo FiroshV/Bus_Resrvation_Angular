@@ -1,0 +1,94 @@
+<div class="container">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)" class="search">
+    <div class="search-header">
+      <!-- <input type="text" id="textId" placeholder="FROM" formControlName="var_source" [ngModel] class="input">
+        &nbsp; &nbsp;&nbsp; -->
+      <div
+        class="
+          col-md-10 col-lg-6 col-xl-7
+          d-flex
+          justify-content-between
+          order-1 order-lg-2
+        "
+      >
+        <img width="200px" height="200px" src="assets/svg/adventure.svg" />
+
+        <h3>Travel safe <br />&nbsp; &nbsp;&nbsp;Travel fast</h3>
+      </div>
+      <select
+        class="input"
+        (change)="changeCityFrom($event)"
+        formControlName="cityNamefrom"
+        [ngModel]
+        placeholder="FROM"
+      >
+        <option value="">FROM</option>
+        <option *ngFor="let city of City" [ngValue]="city">{{ city }}</option>
+      </select>
+      &nbsp; &nbsp;&nbsp;
+
+      <!-- <input type="text" id="textDestination" placeholder="TO" formControlName="var_destination" [ngModel] class="input"> -->
+      <select
+        class="input"
+        (change)="changeCityTo($event)"
+        formControlName="cityNameto"
+        [ngModel]
+      >
+        <option value="">TO</option>
+        <option *ngFor="let city of City" [ngValue]="city">{{ city }}</option>
+      </select>
+      &nbsp; &nbsp;&nbsp;
+
+      <!-- date input -->
+      <input
+        type="date"
+        id="textDate"
+        placeholder="DATE"
+        formControlName="var_date"
+        [ngModel]
+        class="input"
+      />
+      &nbsp; &nbsp;&nbsp;
+
+      <button type="submit" class="submit">Search</button>
+    </div>
+  </form>
+
+  <!-- <p>{{vsource}}</p>
+<p>{{vdestination}}</p> -->
+
+  <!-- <p>get bus_detail works!</p> -->
+
+  <table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th>bus Id</th>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Day</th>
+        <th>Time</th>
+        <th>Cost</th>
+        <th>Book</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let bus of busList">
+        <td>{{ bus.busId }}</td>
+        <td>{{ bus.source }}</td>
+        <td>{{ bus.destination }}</td>
+        <td>{{ bus.day }}</td>
+        <td>{{ bus.time }}</td>
+        <td>{{ bus.ticketPrice }}</td>
+        <td>
+          <input
+            class="submit"
+            type="button"
+            value="Book"
+            (click)="onBook(bus)"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

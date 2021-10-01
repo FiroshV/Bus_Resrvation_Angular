@@ -1,0 +1,63 @@
+<div class="background-color">
+  <div class="d-flex justify-content-center">Bus details</div>
+
+  <h3 class="d-flex justify-content-center">Select your seats</h3>
+
+  <div class="d-flex justify-content-end">No seats selected:{{seats_selected}}</div>
+  <div class="seatBooking">
+    <ul class="showcase">
+      <li>
+        <img width="100px" height="100px" src="assets/svg/seat_available.svg" />
+        <small>Available</small>
+      </li>
+
+      <li>
+        <img width="100px" height="100px" src="assets/svg/seat_selected.svg" />
+        <small>Selected</small>
+      </li>
+
+      <li>
+        <img width="100px" height="100px" src="assets/svg/seat_booked.svg" />
+        <small>Occupied</small>
+      </li>
+    </ul>
+
+    <div class="container">
+      <div class="row">
+        <app-seat class="seat" [seat_no]="1"> </app-seat>
+        <app-seat class="seat" [seat_no]="2"></app-seat>
+        <app-seat class="seat" [seat_no]="3"></app-seat>
+        <app-seat class="seat" [seat_no]="4"></app-seat>
+        <app-seat class="seat" [seat_no]="5"></app-seat>
+        <app-seat class="seat" [seat_no]="6"></app-seat>
+        <app-seat class="seat" [seat_no]="7"></app-seat>
+      </div>
+
+      <div class="row">
+        <app-seat class="seat" [seat_no]="8"> </app-seat>
+        <app-seat class="seat" [seat_no]="9"></app-seat>
+        <app-seat class="seat" [seat_no]="10"></app-seat>
+        <app-seat class="seat" [seat_no]="11"></app-seat>
+        <app-seat class="seat" [seat_no]="12"></app-seat>
+        <app-seat class="seat" [seat_no]="13"></app-seat>
+        <app-seat class="seat" [seat_no]="14"></app-seat>
+      </div>
+      <br />
+      <br />
+      <br />
+      <div class="row">
+        <app-seat class="seat" [seat_no]="15"> </app-seat>
+        <app-seat class="seat" [seat_no]="16"></app-seat>
+        <app-seat class="seat" [seat_no]="17"></app-seat>
+        <app-seat class="seat" [seat_no]="18"></app-seat>
+        <app-seat class="seat" [seat_no]="19"></app-seat>
+        <app-seat class="seat" [seat_no]="20"></app-seat>
+        <app-seat class="seat" [seat_no]="21"></app-seat>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-success rounded-pill">Book Ticket</button>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<i class="material-icons" style="font-size:48px;color:#80ED99">airline_seat_recline_extra</i>-->
+
+<div class="seat occupied" *ngIf="seat_booked_list.includes(seat_no)">
+  <img width="100px" height="100px" src="assets/svg/seat_booked.svg" />
+</div>
+
+<div class="seat" *ngIf="seat_selected_list.includes(seat_no)">
+  <img width="100px" height="100px" src="assets/svg/seat_selected.svg" />
+</div>
+
+<div
+  class="seat"
+  *ngIf="
+    !seat_booked_list.includes(seat_no) && !seat_selected_list.includes(seat_no)
+  "
+>
+  <img width="100px" height="100px" src="assets/svg/seat_available.svg" />
+</div>
+
+<!--
+seat_selected
+seat_booked
+seat_available
+    -->

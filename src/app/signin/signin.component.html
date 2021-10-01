@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-around">
+  <div class="container login-container">
+    <div class="row">
+      <div class="col-md-7 login-form-1">
+        <h3>Sign in</h3>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" >
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              name="email"
+              ngModel
+              required
+              #email="ngModel"
+              placeholder="Your Email *"
+              value=""
+            />
+          </div>
+          <br />
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              ngModel
+              required
+              #password="ngModel"
+              placeholder="Your Password *"
+              value=""
+            />
+          </div>
+          <br />
+          <div class="form-group d-flex justify-content-center">
+            <input type="submit" class="btnSubmit" value="Login" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="loginImage">
+    <img width="500px" height="500px" src="assets/svg/login.svg" />
+  </div>
+</div>

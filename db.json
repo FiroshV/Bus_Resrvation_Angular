@@ -1,0 +1,66 @@
+{
+  "buses": [
+    {
+      "busId": 101,
+      "source": "Pune",
+      "destination": "Delhi",
+      "day": "Friday",
+      "time": "07:00",
+      "cost": 2200
+    },
+    {
+      "busId": 101,
+      "source": "Pune",
+      "destination": "Delhi",
+      "day": "Sunday",
+      "time": "12:30",
+      "cost": 1200
+    },
+    {
+      "busId": 102,
+      "source": "Pune",
+      "destination": "Mumbai",
+      "day": "Monday",
+      "time": "10:00",
+      "cost": 1000
+    },
+    {
+      "busId": 103,
+      "source": "Mumbai",
+      "destination": "Hyderabad",
+      "day": "Tuesday",
+      "time": "23:00",
+      "cost": 1350
+    },
+    {
+      "busId": 104,
+      "source": "Banglore",
+      "destination": "Nagpur",
+      "day": "Wednesday",
+      "time": "17:05",
+      "cost": 800
+    },
+    {
+      "busId": 105,
+      "source": "Pune",
+      "destination": "Delhi",
+      "day": "Thusrday",
+      "time": "19:25",
+      "cost": 1025
+    }
+  ],
+  "user": [
+    {
+      "email": "firosh@gmail.com",
+      "firstname": "Firosh",
+      "lastname": "v",
+      "dob": "19-19-98",
+      "mobile": "9988774455",
+      "gender": "male",
+      "address": "7/407 pune",
+      "password": "123456",
+      "wallet_balance": 10000,
+      "user_role": "regular"
+    }
+  ]
+}

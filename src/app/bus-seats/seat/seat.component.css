@@ -1,0 +1,20 @@
+.seat {
+  height: 12px;
+  width: 15px;
+  margin: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.seat:not(.occupied):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+  cursor: default;
+  transform: scale(1);
+}
