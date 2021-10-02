@@ -13,14 +13,14 @@
         <div class="card">
           <div class="card-body">
             <div class="d-flex flex-column align-items-center text-center">
-              <div class="rounded-circle profileImage" *ngIf="getGender">
+              <div class="rounded-circle profileImage" *ngIf="gender">
                 <img
                   width="150px"
                   height="150px"
                   src="assets/svg/male_avatar.svg"
                 />
               </div>
-              <div class="rounded-circle profileImage" *ngIf="!getGender">
+              <div class="rounded-circle profileImage" *ngIf="!gender">
                 <img
                   width="150px"
                   height="150px"
@@ -116,7 +116,7 @@
                   target="__blank"
                   (click)="onShow()"
                 >
-                  Edit
+                  Change Password
                 </button>
                 <div *ngIf="var1">
                   <input type="text" name="changepassword" />
