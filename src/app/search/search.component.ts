@@ -40,9 +40,7 @@ export class SearchComponent implements OnInit {
     
   onBook(bus:Bus_Detail)
   {
-   let temp:any[]=[];
     sessionStorage.setItem("bus",JSON.stringify(bus));
-    sessionStorage.setItem("seat_booked_list",JSON.stringify(temp));
     var bookingdate = new Date(this.vdate).toLocaleDateString('en-GB', {
       day : 'numeric',
       month : 'numeric',

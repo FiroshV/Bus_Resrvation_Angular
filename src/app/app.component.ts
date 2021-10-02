@@ -4,42 +4,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent{
+export class AppComponent {
   title = 'BusReservation';
+
+  isAdmin(){
+    JSON.parse(sessionStorage.getItem('user') || '').user_role==="admin";
+  }
+
+  isLoggedIn() {
+    return JSON.parse(sessionStorage.getItem('user') || '') !== '';
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ==========================================================================//
-// export class AppComponent {
-//   websiteList: any = ['ItSolutionStuff.com', 'HDTuto.com', 'Nicesnippets.com']
-  
-//   form = new FormGroup({
-//     website: new FormControl('', Validators.required)
-//   });
-  
-//   get f(){
-//     return this.form.controls;
-//   }
-  
-//   submit(){
-//     console.log(this.form.value);
-//   }
-  
-//   changeWebsite(e:any) {
-//     console.log(e.target.value);
-//   }
-  
-// }

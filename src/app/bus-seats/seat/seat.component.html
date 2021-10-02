@@ -6,14 +6,15 @@
   <img width="100px" height="100px" src="assets/svg/seat_booked.svg" />
 </div>
 
-<div class="seat" *ngIf="seat_selected_list.includes(seat_no)">
+<div class="seat" *ngIf="staticSeatSelectedList.includes(seat_no)">
   <img width="100px" height="100px" src="assets/svg/seat_selected.svg" />
 </div>
 
 <div
   class="seat"
   *ngIf="
-    !seat_booked_list.includes(seat_no) && !seat_selected_list.includes(seat_no)
+    !seat_booked_list.includes(seat_no) &&
+    !staticSeatSelectedList.includes(seat_no)
   "
 >
   <img width="100px" height="100px" src="assets/svg/seat_available.svg" />

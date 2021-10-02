@@ -1,0 +1,25 @@
+.btn-primary,
+.btn-primary:hover,
+.btn-outline-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+  background-color: #22577a;
+  border-color: #22577a;
+}
+
+.btn-outline-primary {
+  border: 2px solid #22577a;
+  color: #22577a;
+}
+
+.btn-outline-primary:hover {
+  border: 2px solid #22577a;
+  color: white;
+}
+
+.modal-dialog {
+  position: absolute;
+  right: 10%;
+  top: 10%;
+}

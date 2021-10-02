@@ -1,117 +1,147 @@
-<p>profile works!</p>
-<div class="container" >
-    <div class="main-body">
-    
-          <!-- Breadcrumb -->
-          <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-            </ol>
-          </nav>
-          <!-- /Breadcrumb -->
-    
-          <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                    <div class="mt-3">
-                      <h4>{{profile.firstName}}</h4>
-                      <p class="text-secondary mb-1">{{profile.wallet}}</p>
-                      <button class="btn btn-primary">Top-Up Wallet</button>
-                      <!-- <button class="btn btn-outline-primary">Message</button> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card mt-3">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0">Past Bookings</h6>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0">Wallet</h6>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Full Name</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                     {{profile.firstName}} {{profile.lastName}}
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Email</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      {{profile.email}}
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Gender</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                        {{profile.gender}}
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Mobile</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                        {{profile.mobile}}
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Address</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                        {{profile.address}}
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <a class="btn btn-info " target="__blank" href="">Edit</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+<div class="container">
+  <div class="main-body">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+      </ol>
+    </nav>
+    <!-- /Breadcrumb -->
 
-              <div class="row gutters-sm">
-                <div class="col-sm-6 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3">Past Bookings</h6>
-                      <small>Booking ID :</small>
-                      <br>
-                      <small>Bus Id  :</small>
-                      <br>
-                      <small>Cost   :</small>
-                    </div>
-                  </div>
-                </div>
-                
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex flex-column align-items-center text-center">
+              <div class="rounded-circle profileImage" *ngIf="getGender">
+                <img
+                  width="150px"
+                  height="150px"
+                  src="assets/svg/male_avatar.svg"
+                />
               </div>
-
-
-
+              <div class="rounded-circle profileImage" *ngIf="!getGender">
+                <img
+                  width="150px"
+                  height="150px"
+                  src="assets/svg/female_avatar.svg"
+                />
+              </div>
+              <div class="mt-3">
+                <h4>{{ profile.firstName }}</h4>
+                <p class="text-secondary mb-1">{{ profile.wallet }}</p>
+              </div>
             </div>
           </div>
-
         </div>
+        <div class="card mt-3">
+          <ul class="list-group list-group-flush">
+            <li
+              class="
+                list-group-item
+                d-flex
+                justify-content-between
+                align-items-center
+                flex-wrap
+              "
+            >
+              <h6 class="mb-0">Past Bookings</h6>
+            </li>
+            <li
+              class="
+                list-group-item
+                d-flex
+                justify-content-between
+                align-items-center
+                flex-wrap
+              "
+            >
+              <h6 class="mb-0">Wallet</h6>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Full Name</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{ profile.firstName }} {{ profile.lastName }}
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Email</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{ profile.email }}
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Gender</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{ profile.gender }}
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Mobile</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{ profile.mobile }}
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Address</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{ profile.address }}
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-12">
+                <button
+                  class="btn btn-info"
+                  target="__blank"
+                  (click)="onShow()"
+                >
+                  Edit
+                </button>
+                <div *ngIf="var1">
+                  <input type="text" name="changepassword" />
+                  <input type="text" name="newpassword" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row gutters-sm">
+          <div class="col-sm-6 mb-3">
+            <div class="card h-100">
+              <div class="card-body">
+                <h6 class="d-flex align-items-center mb-3">Past Bookings</h6>
+                <small>Booking ID :</small>
+                <br />
+                <small>Bus Id :</small>
+                <br />
+                <small>Cost :</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</div>

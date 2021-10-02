@@ -1,42 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mynav">
+  <a class="navbar-brand m-2" href="#">Travelistan</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarText"
+    aria-controls="navbarText"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/search">Search</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/seats">seats</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/payment">payment</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/feedback">Feedback</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/profile">Profile</a>
+      </li>
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link" routerLink="/admin" >Admin</a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a class="nav-link" routerLink="/signin">Sign in</a>
+      </li>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Bus</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active"  >
-          <a class="nav-link" routerLink = "/signup">Signup <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item" >
-          <a class="nav-link" routerLink = "/signin">Sign in</a>
-        </li>
-        <li class="nav-item" >
-          <a class="nav-link" routerLink = "/search">Search</a>
-        </li>
-        <li class="nav-item" >
-            <a class="nav-link" routerLink = "/seats">seats</a>
-          </li>
-          <li class="nav-item" >
-            <a class="nav-link" routerLink = "/payment">payment</a>
-          </li>
-          <li class="nav-item" >
-            <a class="nav-link" routerLink = "/feedback">Feedback</a>
-          </li>
-          <li class="nav-item" >
-            <a class="nav-link" routerLink = "/profile">Profile</a>
-          </li>
-          <li class="nav-item" >
-            <a class="nav-link" routerLink = "/admin">Admin</a>
-          </li>
-        </ul>
-    
-    </div>
-  </nav>
-<hr>
-  <router-outlet></router-outlet>
-
+      <li class="nav-item active" *ngIf="isLoggedIn">
+        <a class="nav-link" routerLink="/signup"
+          >Signup <span class="sr-only">(current)</span></a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>
 
 <!-- <alert type="success">hello</alert> -->
 <!-- <app-search></app-search> -->
@@ -45,25 +52,3 @@
 <!-- <app-signup></app-signup> -->
 <!-- <app-signin></app-signin> -->
 <!-- <app-bus-seats></app-bus-seats> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

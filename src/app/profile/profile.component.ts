@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Profile } from './Profile';
 import { ProfileService } from './profile.service';
 
@@ -11,12 +12,22 @@ export class ProfileComponent implements OnInit {
 
 
   profile!: Profile;
-
-  constructor(private service:ProfileService) { }
+var1: boolean=false;
+  constructor(private service:ProfileService,private router:Router) { }
 
   ngOnInit(): void {
-    this.profile=JSON.parse(sessionStorage.getItem("user")|| "");
+    this.profile=JSON.parse(sessionStorage.getItem("user") || "{}");
   }
   
+  onShow()
+  {
+    console.log("gfvgbhnj");
+this.router.navigate(['/changePassword'])
+
+  }
+
+  getGender(){
+    return JSON.parse(sessionStorage.getItem('user')||"male").gender=="male";
+  }
   
 }

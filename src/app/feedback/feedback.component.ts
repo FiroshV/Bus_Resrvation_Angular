@@ -17,8 +17,10 @@ export class FeedbackComponent implements OnInit {
   }
 
   public getFeedbackById(id:number){
-    this.service.getFeedbackById(this.id)  
-  .subscribe((data: any) => console.log(data), (error: any) => console.log(error));
+    this.service.getFeedbackById(this.id).subscribe(
+      (      response: Feedback)=>{this.f=response; console.log("response feedbackid",response);}
+    );
+  
   }
 
   public addFeedback(f:Feedback){

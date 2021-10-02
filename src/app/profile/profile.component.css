@@ -51,3 +51,10 @@ body{
 .shadow-none {
     box-shadow: none!important;
 }
+
+.btn-info{
+    background-color: #22577A;
+    color: white;
+}
+
+

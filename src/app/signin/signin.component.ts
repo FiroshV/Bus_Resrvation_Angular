@@ -31,21 +31,19 @@ export class SigninComponent implements OnInit {
   }
 
   public getUserByEmail(email: string, password: string) {
-    this.signinService
-      .getUserByEmail(email)
-      .subscribe((response: User) => {
-        console.log(response);
-        if (response.password === password) {
-          this.user = response;
-          console.log('verified');
-          sessionStorage.setItem('user', JSON.stringify(response));
-          //console.log(JSON.parse(sessionStorage.getItem('user')||"").firstname);
-          this.router.navigate(['/search']);
-        } else {
-          console.log('unverified');
-        }
-
+    this.signinService.getUserByEmail(email).subscribe((response: User) => {
+      console.log(response);
+      if (response.password === password) {
         this.user = response;
-      });
+        console.log('verified');
+        sessionStorage.setItem('user', JSON.stringify(response));
+        //console.log(JSON.parse(sessionStorage.getItem('user')||"").firstname);
+        this.router.navigate(['/search']);
+      } else {
+        console.log('unverified');
+      }
+
+      this.user = response;
+    });
   }
 }

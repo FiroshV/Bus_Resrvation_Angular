@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Payment } from './Payment';
+import { Booking } from '../Booking';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,11 @@ export class PaymentService {
   }
   public  addPayment(p:Payment){
     return this.httpClient.post(this.baseUrl,p);
+  }
+
+  public  addBookingDetails(b:Booking){
+    console.log("hello22");
+    return this.httpClient.post("http://localhost:8040/bookingshr/addBookingDetail",b);
   }
   constructor(private httpClient:HttpClient) { }
 }
