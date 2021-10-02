@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BusSeatsService } from './bus-seats.service';
 import { SeatComponent } from './seat/seat.component';
 
@@ -8,25 +9,46 @@ import { SeatComponent } from './seat/seat.component';
   styleUrls: ['./bus-seats.component.css'],
 })
 export class BusSeatsComponent implements OnInit {
-  seats_selected: number = SeatComponent.seat_selected_list.length;
+  
+  static seats_selected: number = JSON.parse(sessionStorage.getItem("seat_booked_list")||'').length;
+  seatsList:number[] = [];
 
-  seatsList: number[] = [];
-
-  constructor(private busSeatsService: BusSeatsService) {}
+  constructor(private busSeatsService:BusSeatsService,private router:Router) { }
 
   ngOnInit(): void {
     this.getSeatsList();
+
+    console.log("selected count",SeatComponent.seat_selected_list.length);
+    
+    //.seats_selected=JSON.parse(sessionStorage.getItem("seats_selected_list")||'');
+
   }
 
-  public getSeatsList() {
-    this.busSeatsService.getSeatsList().subscribe((response: number[]) => {
-      this.seatsList = response;
-      console.log(response);
-      if (JSON.stringify(response).length != 0) {
-        localStorage.setItem('bookedSeats', JSON.stringify(response));
-      } else {
-        localStorage.setItem('bookedSeats', '');
+static getSeatsListFromChild(numlist : number[])
+{
+this.seats_selected=numlist.length;
+}
+get staticSeatSelectedList() {
+  console.log("seat list", BusSeatsComponent.seats_selected);
+  return BusSeatsComponent.seats_selected;
+}
+
+onBook()
+{
+  this.router.navigate(['/payment']);
+}
+  public getSeatsList(){
+    this.busSeatsService.getSeatsList().subscribe(
+      (response:number[])=>{
+        this.seatsList=response;
+        console.log(response);
+        if(JSON.stringify(response).length!=0){
+        localStorage.setItem('bookedSeats',JSON.stringify(response));}
+        else{
+          localStorage.setItem('bookedSeats','');
+        }
       }
-    });
+    );
+
   }
 }

@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
+import { BusSeatsComponent } from '../bus-seats/bus-seats.component';
+import { SeatComponent } from '../bus-seats/seat/seat.component';
 import { Bus_Detail } from '../Bus_Detail';
 import { SearchService } from '../services/search.service';
 
@@ -46,9 +48,10 @@ export class SearchComponent implements OnInit {
       month : 'numeric',
       year : 'numeric'
   }).split('/').join('-');
-
+sessionStorage.setItem("seat_booked_list",JSON.stringify([]));
   sessionStorage.setItem("bookingdate",JSON.stringify(bookingdate));
-
+  BusSeatsComponent.getSeatsListFromChild([]);
+  SeatComponent.setSeatsList([]);
     
 this.router.navigate(['/seats'])
   }
@@ -75,6 +78,8 @@ this.router.navigate(['/seats'])
     console.log(weekday[d.getDay()]);
 
     this.getBusList(this.vsource,this.vdestination,weekday[d.getDay()]) ;
+
+
   }
 
   ngOnInit(): void {

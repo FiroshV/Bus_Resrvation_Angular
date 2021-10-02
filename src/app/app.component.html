@@ -28,16 +28,21 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/profile">Profile</a>
       </li>
-      <li class="nav-item" *ngIf="isAdmin">
+      <li class="nav-item">
         <a class="nav-link" routerLink="/admin" >Admin</a>
       </li>
-      <li class="nav-item" *ngIf="isLoggedIn">
+      <li class="nav-item" >
         <a class="nav-link" routerLink="/signin">Sign in</a>
       </li>
 
-      <li class="nav-item active" *ngIf="isLoggedIn">
+      <li class="nav-item active" >
         <a class="nav-link" routerLink="/signup"
           >Signup <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item active" >
+        <a class="nav-link" routerLink="/signin" (click)="logout()"
+          >Logout <span class="sr-only">(current)</span></a
         >
       </li>
     </ul>

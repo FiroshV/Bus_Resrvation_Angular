@@ -13,7 +13,7 @@ export class SearchService {
   constructor(private http:HttpClient) { }
 
   public getBusList(vsource: string, vdestination: string, Day:string): Observable<Bus_Detail[]> {
-  //  console.log(`${this.baseUrl + '/search'}/${vsource}/${vdestination}`);
+    console.log(`${this.baseUrl + '/search'}/${vsource}/${vdestination}/${Day}`);
     return this.http.get<any>(`${this.baseUrl + '/search'}/${vsource}/${vdestination}/${Day}`);
 }
 }

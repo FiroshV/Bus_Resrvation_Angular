@@ -13,7 +13,8 @@ export class AppComponent {
     JSON.parse(sessionStorage.getItem('user') || '').user_role==="admin";
   }
 
-  isLoggedIn() {
-    return JSON.parse(sessionStorage.getItem('user') || '') !== '';
-  }
+ logout()
+ {
+sessionStorage.setItem("user",'');
+ }
 }

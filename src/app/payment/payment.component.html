@@ -7,13 +7,13 @@
     <div class="d-flex justify-content-center mt-2">
       <h3>Booking Details</h3>
     </div>
-    <div class="bill-content"><h5>Booked by: username</h5></div>
-    <div class="bill-content"><h5>Origin: Pune</h5></div>
-    <div class="bill-content"><h5>Destination: Mumbai</h5></div>
-    <div class="bill-content"><h5>BusId by: 101</h5></div>
-    <div class="bill-content"><h5>Seats booked: S1, S2, S3, S4, S5</h5></div>
+    <div class="bill-content"><h5>Booked by: {{name}}</h5></div>
+    <div class="bill-content"><h5>Origin: {{source}}</h5></div>
+    <div class="bill-content"><h5>Destination: {{destination}}</h5></div>
+    <div class="bill-content"><h5>BusId by: {{busid}}</h5></div>
+    <div class="bill-content"><h5>Seats booked: {{seats}}</h5></div>
     <div class="bill-content">
-      <h5>Total cost: <i class="fa fa-inr" aria-hidden="true"></i>2000</h5>
+      <h5>Total cost: <i class="fa fa-inr" aria-hidden="true"></i>{{cost}}</h5>
     </div>
   </div>
 </div>
@@ -130,7 +130,7 @@
                     </div>
                   </div>
                   <div class="px-5 pay d-flex justify-content-center">
-                    <button class="btn btn-success paymentButton">
+                    <button class="btn btn-success paymentButton" (click)="addPayment()" data-dismiss="modal">
                       Make Payment
                     </button>
                   </div>
@@ -154,7 +154,7 @@
                   <span>Wallet Password</span>
                 </div>
                 <div class="pay px-5 d-flex justify-content-center">
-                  <button class="btn btn-primary btn-block paymentButton">
+                  <button class="btn btn-primary btn-block paymentButton" (click)="addPayment()" data-dismiss="modal">
                     Make Payment
                   </button>
                 </div>
