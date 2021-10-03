@@ -28,6 +28,10 @@ export class SigninComponent implements OnInit {
     console.log(f.valid); // false
 
     this.getUserByEmail(f.value.email, f.value.password);
+
+    
+
+
   }
 
   public getUserByEmail(email: string, password: string) {
@@ -38,7 +42,8 @@ export class SigninComponent implements OnInit {
         console.log('verified');
         sessionStorage.setItem('user', JSON.stringify(response));
         //console.log(JSON.parse(sessionStorage.getItem('user')||"").firstname);
-        this.router.navigate(['/search']);
+
+          this.router.navigate(['/search']);
       } else {
         console.log('unverified');
       }

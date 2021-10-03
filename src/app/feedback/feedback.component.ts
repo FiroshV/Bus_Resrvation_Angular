@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Form, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Feedback } from './Feedback';
 import { FeedbackService } from './feedback.service';
 
@@ -10,10 +11,20 @@ import { FeedbackService } from './feedback.service';
 export class FeedbackComponent implements OnInit {
   id!: number;
   f!: Feedback;
-
-  constructor(private service:FeedbackService) { }
-
+feedback_obj=new Feedback();
+  description: any;
+  
+  rating: any;
+  constructor(private service:FeedbackService) {  
+  
+  }
+  
   ngOnInit(): void {
+  }
+
+  onSubmit(f: NgForm): void
+  {
+    this.addFeedback(f); 
   }
 
   public getFeedbackById(id:number){
@@ -23,8 +34,13 @@ export class FeedbackComponent implements OnInit {
   
   }
 
-  public addFeedback(f:Feedback){
-    this.service.addFeedback(this.f)  
+  public addFeedback(f:NgForm){
+    this.feedback_obj.feedbackId=11;
+    this.feedback_obj.ticketNo=JSON.parse(sessionStorage.getItem("booking")||'').ticketNo;
+    this.feedback_obj.description=f.value.description;
+    this.feedback_obj.rating=f.value.rating;
+    
+    this.service.addFeedback(this.feedback_obj)  
   .subscribe((data: any) => console.log(data), (error: any) => console.log(error));
   }
 

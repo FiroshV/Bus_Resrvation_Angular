@@ -1,0 +1,60 @@
+.right-half {
+    width: 70vw;
+    height: 100vh;
+  }
+  
+  .header {
+    width: 20%;
+    margin: 1%;
+    padding: 1%;
+    background-color: #80ed99;
+    color: #22577a;
+    border-radius: 2rem;
+  }
+  
+  .header-tab {
+    width: 70vw;
+    height: 150vh;
+  }
+  
+  .analytics-header,
+  .driver-header,
+  .bus-header {
+    top: 10%;
+    width: 20%;
+    height: 5%;
+    margin: -2% 6% 2% 6%;
+    padding: 1%;
+    background-color: #22577a;
+    color: white;
+    border-radius: 2rem;
+  }
+  
+  .card-body {
+    height: 100vh;
+  }
+  
+  .operationSelect {
+    width: 60%;
+  }
+  
+  .btn-primary {
+    color: white;
+    background-color: #22577a;
+    border-radius: 1rem;
+  }
+  
+  table {
+    border-collapse: separate;
+    border-spacing: 0 1em;
+  }
+  
+  td:first-child,
+  th:first-child {
+    border-radius: 20px 0 0 20px;
+  }
+  
+  td:last-child,
+  th:last-child {
+    border-radius: 0 20px 20px 0;
+  }

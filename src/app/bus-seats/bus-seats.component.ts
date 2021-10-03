@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BusSeatsService } from './bus-seats.service';
+import { Seat } from './seat/Seat';
 import { SeatComponent } from './seat/seat.component';
 
 @Component({
@@ -9,9 +10,10 @@ import { SeatComponent } from './seat/seat.component';
   styleUrls: ['./bus-seats.component.css'],
 })
 export class BusSeatsComponent implements OnInit {
+  static seats_selected:number;
+    seatsList:number[] = [];
   
-  static seats_selected: number = JSON.parse(sessionStorage.getItem("seat_booked_list")||'').length;
-  seatsList:number[] = [];
+    
 
   constructor(private busSeatsService:BusSeatsService,private router:Router) { }
 
@@ -19,7 +21,8 @@ export class BusSeatsComponent implements OnInit {
     this.getSeatsList();
 
     console.log("selected count",SeatComponent.seat_selected_list.length);
-    
+    BusSeatsComponent.seats_selected = JSON.parse(sessionStorage.getItem("seat_booked_list")||'').length;
+
     //.seats_selected=JSON.parse(sessionStorage.getItem("seats_selected_list")||'');
 
   }
@@ -35,7 +38,9 @@ get staticSeatSelectedList() {
 
 onBook()
 {
+  
   this.router.navigate(['/payment']);
+
 }
   public getSeatsList(){
     this.busSeatsService.getSeatsList().subscribe(

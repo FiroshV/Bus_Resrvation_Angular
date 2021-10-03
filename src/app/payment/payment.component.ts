@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Booking } from '../Booking';
+import { BusSeatsService } from '../bus-seats/bus-seats.service';
+import { Seat } from '../bus-seats/seat/Seat';
 import { Payment } from './Payment';
 import { PaymentService } from './payment.service';
 
@@ -20,9 +22,12 @@ destination!:string;
 seats:number[]=[];
 cost!:number;
 busid!:number;
-
-  constructor(private service:PaymentService,private router:Router) { }
-
+  bookedseats: any;
+  seatsselected: any;
+  no:number=43;
+  temp:any;
+  constructor(private service:PaymentService,private ser:BusSeatsService, private router:Router) { }
+seat:any;
   booking=new Booking();
   
   ngOnInit(): void {
@@ -40,14 +45,14 @@ busid!:number;
   this.destination=JSON.parse(sessionStorage.getItem("bus") || '').destination;
   this.seats=JSON.parse(sessionStorage.getItem("seat_booked_list") || '');
   this.busid=JSON.parse(sessionStorage.getItem("bus") || '').busId;
-  this.cost=JSON.parse(sessionStorage.getItem("seat_booked_list") || '').length*JSON.parse(sessionStorage.getItem("bus") || '').ticketPrice;
+  this.cost=JSON.parse(sessionStorage.getItem("seat_booked_list") || '').split(',').map(Number).length*JSON.parse(sessionStorage.getItem("bus") || '').ticketPrice;
   
   }
 
   public  addPayment(){
     //get from session storage
     console.log("payment is");
-    this.booking.ticketNo=35;
+    this.booking.ticketNo=350;
 
     this.booking.dateTime=JSON.parse(sessionStorage.getItem("bookingdate") || '');
     console.log(this.booking.dateTime);
@@ -61,12 +66,39 @@ this.booking.email=JSON.parse(sessionStorage.getItem("user") || '').email;
     this.booking.totalCost=this.cost;
     this.booking.payment.cost=this.cost;
     this.booking.payment.paymentMode="online";
-    this.booking.payment.trxId=19;
+    this.booking.payment.trxId=181;
     console.log("payment is",this.booking);
+sessionStorage.setItem('booking',JSON.stringify(this.booking));
 
-    //post
-    this.service.addBookingDetails(this.booking)
+
+this.service.addBookingDetails(this.booking)
   .subscribe((data: any) => console.log(data), (error: any) => console.log(error));  
+
+
+
+    this.temp=JSON.parse(sessionStorage.getItem("seat_booked_list") || '').split(',').map(Number);
+
+console.log('type',typeof JSON.parse(sessionStorage.getItem("seat_booked_list") || ''));
+this.bookedseats=this.temp.length;
+
+for(let i=0;i<this.bookedseats;i++)
+{
+  this.seat=new Seat();
+this.seat.seatType="ac";
+this.seat.ticketNo=this.booking.ticketNo;
+this.seat.seatId=this.no++;
+this.seat.seatNo=this.temp[i];
+console.log('seats is',this.seat);
+
+this.ser.addSeats(this.seat)
+  .subscribe((data: any) => console.log(data), (error: any) => console.log(error));  
+
+}
+
+
+    
+
+  
 
   this.router.navigate(['/feedback']);
 

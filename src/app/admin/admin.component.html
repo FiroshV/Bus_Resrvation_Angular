@@ -1,66 +1,210 @@
-<section class="vh-100" >
-    <div class="container h-100">
-<div class="row d-flex justify-content-center align-items-center h-100">
-<div class="col-lg-12 col-xl-11">
-<div class="card">
-   <h4 class="card-header bg-dark text-white">Admin Dashboard</h4>
-   <ul class="list-group">
-     <li class="list-group-item">
-       <a href="" class="nav-link text-success">
-         Add Bus
-       </a>
-     </li>
-     <li class="list-group-item">
-       <a href="" class="nav-link text-success">
-         Update bus
-       </a>
-     </li>
-     <li class="list-group-item">
-       <a href="" class="nav-link text-success">
-         Delete bus
-       </a>
-     </li>
-     <li class="list-group-item">
-       <a href="" class="nav-link text-success">
-        Search bus
-       </a>
-     </li>
-    <li class="list-group-item">
-       <a class="nav-link text-success">
-         Add Driver
-       </a>
-     </li> 
-     <li class="list-group-item">
-       <a class="nav-link text-success">
-         Update Driver
-       </a>
-     </li>    <li class="list-group-item">
-       <a class="nav-link text-success">
-         Delete Driver
-       </a>
-     </li>    <li class="list-group-item">
-       <a class="nav-link text-success">
-         Search Driver
-       </a>
-     </li> 
-   </ul>
-   <!-- <div className="card mb-4">
-       <h4 className="card-header">Admin Information</h4>
-       <ul className="list-group">
-         <li className="list-group-item">
-           <span className="badge badge-success mr-2">Name:</span> 
-         </li>
-         <li className="list-group-item">
-           <span className="badge badge-success mr-2">Email:</span>
-         </li>
+<div class="header d-flex justify-content-center"><h4>Welcome admin</h4></div>
+<div class="d-flex">
+  <div class="adminImage m-5">
+    <img width="400px" height="400px" src="assets/svg/admin.svg" />
+  </div>
+  <div class="d-flex right-half fl row">
+    <div class="w-100 justify-content-around">
+      <p>
+        <button
+          class="btn btn-primary col analytics-header"
+          (click)="setShowAnalytics()"
+        >
+          Show analytics
+        </button>
 
-         <li className="list-group-item">
-           <span className="badge badge-danger">Admin Area</span>
-         </li>
-       </ul>
-     </div> -->
- </div>
- </div>
- </div>
+        <button
+          class="btn btn-primary col bus-header"
+          (click)="setShowBusDetails()"
+        >
+          Bus Details
+        </button>
+
+        <button
+          class="btn btn-primary col driver-header"
+          (click)="setShowDriverDetails()"
+        >
+          Driver Details
+        </button>
+      </p>
     </div>
- </section>
+    <div class="row">
+      <div class="w-100" *ngIf="showAnalytics">
+        <div id="analytics">
+          <div class="card card-body">
+            analytics. Anim pariatur cliche reprehenderit, enim eiusmod high
+            life accusamus terry richardson ad squid. Nihil anim keffiyeh
+            helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+            proident.
+          </div>
+        </div>
+      </div>
+      <div class="w-100" *ngIf="showBusDetails">
+        <div id="bus">
+          <div class="card card-body">
+            <div class="row">
+              <div class="col">
+                <select
+                  class="input operationSelect"
+                  [(ngModel)]="selectedOperation"
+                  placeholder="Select operation"
+                  (change)="onChange()"
+                >
+                  <option *ngFor="let op of Operations" [ngValue]="op">
+                    {{ op }}
+                  </option>
+                </select>
+              </div>
+              
+              <div class="table-body">
+                <table class="table table-striped table-dark">
+                  <thead>
+                    <tr>
+                      <th *ngIf="selectedOperation!='Add Records'">Bus Id</th>
+                      <th>No of Seats</th>
+                      <th>Source</th>
+                      <th>Destination</th>
+                      <th>Day</th>
+                      <th>Time</th>
+                      <th>Cost</th>
+                      <th>Driver Id</th>
+                      <th *ngIf="selectedOperation=='Display all records'">Delete</th>
+                      <th *ngIf="selectedOperation=='Edit Records'">Update</th>
+                      <th *ngIf="selectedOperation=='Add Records'">Add</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr *ngFor="let b of bus">
+                      <td *ngIf="selectedOperation!='Add Records'">{{ b.busId }}</td>
+                      <td *ngIf="selectedOperation!='Add Records'">{{b.noOfSeats}}</td>
+                      <td *ngIf="selectedOperation!='Add Records'">{{b.source}}</td>
+                      <td *ngIf="selectedOperation!='Add Records'">{{b.destination}}</td>
+                      <td *ngIf="selectedOperation!='Add Records'">{{b.day}}</td>
+                      <td *ngIf="selectedOperation!='Add Records'">{{b.time}}</td>
+                      <td *ngIf="selectedOperation!='Add Records'">{{b.ticketPrice}}</td>
+                      <td *ngIf="selectedOperation!='Add Records' && selectedOperation!='Edit Records'">{{b.driverId}}</td>
+
+                      <td *ngIf="selectedOperation=='Add Records'"><input type="text"  [(ngModel)]="busnoOfSeats"/></td>
+                      <td *ngIf="selectedOperation=='Add Records'"><input type="text"  [(ngModel)]="bussource"/></td>
+                      <td *ngIf="selectedOperation=='Add Records'"><input type="text"  [(ngModel)]="busdestination"/></td>
+                      <td *ngIf="selectedOperation=='Add Records'"><input type="text"  [(ngModel)]="busday"/></td>
+                      <td *ngIf="selectedOperation=='Add Records'"><input type="text"  [(ngModel)]="bustime"/></td>
+                      <td *ngIf="selectedOperation=='Add Records'"><input type="text"  [(ngModel)]="busticketPrice"/></td>
+                      <td *ngIf="selectedOperation=='Add Records'"><input type="text"  [(ngModel)]="busdriverId"/></td>
+                      
+                      <td *ngIf="selectedOperation=='Edit Records'"><input type="text"  id="driverId" value={{b.driverId}}/></td>
+                      
+
+
+                      <td *ngIf="selectedOperation=='Display all records'">
+                        <input
+                          class="submit"
+                          type="button"
+                          value="Delete"
+                          (click)="deleteBusDetail(b.busId)"
+                        />
+                      </td>
+                      <td *ngIf="selectedOperation=='Edit Records'">
+                        <input
+                          class="submit"
+                          type="button"
+                          value="Update"
+                          (click)="updateBusDetail(b.busId)"
+                        />
+                      </td>
+                      <td *ngIf="selectedOperation=='Add Records'">
+                        <input
+                          class="submit"
+                          type="button"
+                          value="Add"
+                          (click)="addBusDetail()"
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-100" *ngIf="showDriverDetails">
+        <div id="driver">
+          <div class="card card-body">
+            <div class="row">
+              <div class="col">
+                <select
+                  class="input operationSelect"
+                  [(ngModel)]="selectedOperation"
+                  placeholder="Select operation"
+                  (change)="onChange()"
+                >
+                  <option *ngFor="let op of Operations" [ngValue]="op">
+                    {{ op }}
+                  </option>
+                </select>
+              </div>
+              
+              <div class="table-body">
+                <table class="table table-striped table-dark">
+                  <thead>
+                    <tr>
+                      <th *ngIf="selectedOperation!='Add Records'">Driver Id</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Mobile</th>
+                      <th *ngIf="selectedOperation=='Display all records'">Delete</th>
+                      <th *ngIf="selectedOperation=='Edit Records'">Update</th>
+                      <th *ngIf="selectedOperation=='Add Records'">Add</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr *ngFor="let dr of driver">
+                      <td *ngIf="selectedOperation!='Add Records'" >{{dr.driverId}}</td>
+                      <td *ngIf="selectedOperation!='Add Records'">{{dr.firstName}}</td>
+                      <td *ngIf="selectedOperation!='Add Records'">{{dr.lastName}}</td>
+                      <td *ngIf="selectedOperation!='Add Records' && selectedOperation!='Edit Records'">{{dr.mobile}}</td>
+                      <td *ngIf="selectedOperation=='Add Records'"><input type="text" [(ngModel)]="driverFirstname"/></td>
+                      <td *ngIf="selectedOperation=='Add Records'"><input type="text" [(ngModel)]="driverLastname"/></td>
+                      <td *ngIf="selectedOperation=='Add Records'"><input type="text" [(ngModel)]="driverMobile"/></td>
+
+                      <td *ngIf="selectedOperation=='Edit Records'"><input type="text" id='driverMobile' value={{dr.mobile}}/></td>
+
+                      <td *ngIf="selectedOperation=='Display all records'">
+                        <input
+                          class="submit"
+                          type="button"
+                          value="Delete"
+                       (click)="deleteDriver(dr.driverId)" 
+                        />
+                      </td>
+                      <td *ngIf="selectedOperation=='Edit Records'">
+                        <input
+                          class="submit"
+                          type="button"
+                          value="Update"
+                          (click)="updateDriverInfo(dr.driverId)"
+                        />
+                      </td>
+                      <td *ngIf="selectedOperation=='Add Records'">
+                        <input
+                          class="submit"
+                          type="button"
+                          value="Add"
+                          (click)="addDriverDetail()"
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

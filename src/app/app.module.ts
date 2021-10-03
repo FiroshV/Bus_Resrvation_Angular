@@ -15,8 +15,7 @@ import { SignupComponent } from './signup/signup.component';
 import { BusSeatsComponent } from './bus-seats/bus-seats.component';
 import { SeatComponent } from './bus-seats/seat/seat.component';
 import { ProfileComponent } from './profile/profile.component';
-import { DriverComponent } from './admin/driver/driver.component';
-import { BusComponent } from './admin/bus/bus.component';
+
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 
 @NgModule({
@@ -31,8 +30,6 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
     BusSeatsComponent,
     SeatComponent,
     ProfileComponent,
-    DriverComponent,
-    BusComponent,
     ChangepasswordComponent
   ],
   imports: [
