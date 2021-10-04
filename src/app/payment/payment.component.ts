@@ -70,8 +70,30 @@ this.booking.email=JSON.parse(sessionStorage.getItem("user") || '').email;
     console.log("payment is",this.booking);
 sessionStorage.setItem('booking',JSON.stringify(this.booking));
 
-this.service.getTicketNo().subscribe((response: number) => {this.ticketno=response;
-  console.log('ticketno is',response);});
+this.service.getTicketNo().subscribe((response: number) => {this.ticketno=response+1;
+  console.log('ticketno is',response+1);
+
+  sessionStorage.setItem("ticketno",JSON.stringify(response+1));
+
+  for(let i=0;i<this.bookedseats;i++)
+{
+  this.seat=new Seat();
+this.seat.seatType="ac";
+this.seat.ticketNo=this.ticketno;
+//this.seat.seatId=this.no++;
+this.seat.seatNo=this.temp[i];
+console.log('seats is',this.seat);
+console.log('ticketno is',this.ticketno);
+
+this.ser.addSeats(this.seat)
+  .subscribe((data: any) => console.log(data), (error: any) => console.log(error));  
+
+}
+
+
+    
+
+});
 
 this.service.addBookingDetails(this.booking)
   .subscribe((data: any) => console.log(data), (error: any) => console.log(error));  
@@ -83,22 +105,7 @@ this.service.addBookingDetails(this.booking)
 console.log('type',typeof JSON.parse(sessionStorage.getItem("seat_booked_list") || ''));
 this.bookedseats=this.temp.length;
 
-for(let i=0;i<this.bookedseats;i++)
-{
-  this.seat=new Seat();
-this.seat.seatType="ac";
-this.seat.ticketNo=this.ticketno;
-//this.seat.seatId=this.no++;
-this.seat.seatNo=this.temp[i];
-console.log('seats is',this.seat);
 
-this.ser.addSeats(this.seat)
-  .subscribe((data: any) => console.log(data), (error: any) => console.log(error));  
-
-}
-
-
-    
 
   
 

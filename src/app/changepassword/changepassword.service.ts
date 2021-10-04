@@ -19,5 +19,5 @@ export class ChangepasswordService {
     console.log(this.baseUrl1);
     return this.http.post(this.baseUrl1+email+'/'+password,d);
   }
-
+  
 }

@@ -1,12 +1,12 @@
 export class Profile{
-    email:String="";
-    firstName:String="";
-    lastName:String="";
-    dob:String="";
-    mobile:String="";
-    gender:String="";
-    address:String="";
-    password:String="";
+    email:string="";
+    firstName:string="";
+    lastName:string="";
+    dob:string="";
+    mobile:string="";
+    gender:string="";
+    address:string="";
+    password:string="";
     wallet:number=0;
-    user:String="";
+    user:string="";
 }

@@ -52,7 +52,7 @@ sessionStorage.setItem("seat_booked_list",JSON.stringify([]));
   sessionStorage.setItem("bookingdate",JSON.stringify(bookingdate));
   BusSeatsComponent.getSeatsListFromChild([]);
   SeatComponent.setSeatsList([]);
-    
+  sessionStorage.setItem('bookedSeats','');
 this.router.navigate(['/seats'])
   }
   onSubmit(myForm : any): void{

@@ -25,8 +25,8 @@ SeatComponent.seat_selected_list=numlist;
   constructor() { }
 
   ngOnInit(): void {
-    this.seat_booked_list =  JSON.parse(localStorage.getItem('bookedSeats')||'[]');
-    
+    this.seat_booked_list =  JSON.parse(sessionStorage.getItem('bookedSeats')||'[]');
+    console.log('booked seats are',this.seat_booked_list);
   }
   get staticSeatSelectedList() {
     console.log("seat list", SeatComponent.seat_selected_list);

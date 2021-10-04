@@ -56,3 +56,13 @@
 .row {
   display: flex;
 }
+
+.seatsCounter{
+  margin-right: 10%;
+width: 15%;
+padding: 1%;
+background-color: #22577a;
+color: white;
+border-radius: 2rem;
+margin-left: 70%;
+}

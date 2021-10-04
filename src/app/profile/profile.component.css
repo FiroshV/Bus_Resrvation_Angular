@@ -58,3 +58,32 @@ body{
 }
 
 
+table {
+    border-collapse: separate;
+    border-spacing: 0 1em;
+    width: 100%;
+  }
+  
+  td:first-child,
+  th:first-child {
+    border-radius: 20px 0 0 20px;
+  }
+  
+  td:last-child,
+  th:last-child {
+    border-radius: 0 20px 20px 0;
+  }  
+.tableCard{
+    width: 200%;
+}
+
+.submit {
+    background: #22577A;
+    color: white;
+    border-color: #22577A;
+    height: 50px;
+    width: 100px;
+    font: bold15px arial, sans-serif;
+    border-radius: 2rem;
+    text-shadow: none;
+  }

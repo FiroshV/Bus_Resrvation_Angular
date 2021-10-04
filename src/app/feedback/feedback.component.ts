@@ -36,7 +36,7 @@ feedback_obj=new Feedback();
 
   public addFeedback(f:NgForm){
     this.feedback_obj.feedbackId=11;
-    this.feedback_obj.ticketNo=JSON.parse(sessionStorage.getItem("booking")||'').ticketNo;
+    this.feedback_obj.ticketNo=JSON.parse(sessionStorage.getItem("ticketno")||'');
     this.feedback_obj.description=f.value.description;
     this.feedback_obj.rating=f.value.rating;
     

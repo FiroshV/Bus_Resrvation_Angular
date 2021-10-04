@@ -11,8 +11,27 @@ export class AppComponent {
  // let temp=JSON.parse(sessionStorage.getItem("seat_booked_list") || '').split(',').map(Number);
  // console.log('temp is',temp);
  // console.log(typeof temp);
-  isAdmin(){
-    JSON.parse(sessionStorage.getItem('user') || '').user_role==="admin";
+  static isadmin:boolean=false;
+  static islogin:boolean=false;
+
+ static isAdmin(){  
+  AppComponent.isadmin=JSON.parse(sessionStorage.getItem('user') || '').user_role==="admin";
+  }
+
+  get getisAdmin()
+  {
+    return AppComponent.isadmin;
+  }
+
+  static isLoggedIn(log:boolean) {
+    AppComponent.islogin=log;
+    console.log('log in',AppComponent.islogin);
+
+  }
+
+  get getisLogin()
+  {
+    return AppComponent.islogin;
   }
   ngOnInit(): void {
 
@@ -26,6 +45,7 @@ export class AppComponent {
  logout()
  {
 sessionStorage.setItem("user",'');
+AppComponent.isLoggedIn(false);
  }
 
 

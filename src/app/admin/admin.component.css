@@ -58,3 +58,14 @@
   th:last-child {
     border-radius: 0 20px 20px 0;
   }
+
+  .submit {
+    background: #22577A;
+    color: white;
+    border-color: #22577A;
+    height: 50px;
+    width: 100px;
+    font: bold15px arial, sans-serif;
+    border-radius: 2rem;
+    text-shadow: none;
+  }

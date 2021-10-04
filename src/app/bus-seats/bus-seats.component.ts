@@ -48,9 +48,9 @@ onBook()
         this.seatsList=response;
         console.log(response);
         if(JSON.stringify(response).length!=0){
-        localStorage.setItem('bookedSeats',JSON.stringify(response));}
+        sessionStorage.setItem('bookedSeats',JSON.stringify(response));}
         else{
-          localStorage.setItem('bookedSeats','');
+          sessionStorage.setItem('bookedSeats','');
         }
       }
     );
