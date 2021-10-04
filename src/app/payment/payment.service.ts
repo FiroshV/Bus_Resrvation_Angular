@@ -8,7 +8,8 @@ import { Booking } from '../Booking';
 })
 export class PaymentService {
 
-  private baseUrl="http:localhost:8040/paymentshr";
+  private baseUrl="http://localhost:8040/paymentshr";
+  private baseUrl1="http://localhost:8040";
   public  getPaymentList(){
     return this.httpClient.get<any>(this.baseUrl);
   }
@@ -22,6 +23,11 @@ export class PaymentService {
   public  addBookingDetails(b:Booking){
     console.log("hello22");
     return this.httpClient.post("http://localhost:8040/bookingshr/addBookingDetail",b);
+  }
+
+  public getTicketNo()
+  {
+    return this.httpClient.get<any>(this.baseUrl1+'/bookingshr/'+'getTicketNo');
   }
   constructor(private httpClient:HttpClient) { }
 }

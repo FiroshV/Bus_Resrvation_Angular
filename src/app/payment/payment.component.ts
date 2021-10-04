@@ -24,12 +24,12 @@ cost!:number;
 busid!:number;
   bookedseats: any;
   seatsselected: any;
-  no:number=43;
+  //no:number=43;
   temp:any;
   constructor(private service:PaymentService,private ser:BusSeatsService, private router:Router) { }
 seat:any;
   booking=new Booking();
-  
+  ticketno:number=0;
   ngOnInit(): void {
     /*
     this.booking.ticket_no=101;
@@ -52,7 +52,7 @@ seat:any;
   public  addPayment(){
     //get from session storage
     console.log("payment is");
-    this.booking.ticketNo=350;
+    //this.booking.ticketNo=350;
 
     this.booking.dateTime=JSON.parse(sessionStorage.getItem("bookingdate") || '');
     console.log(this.booking.dateTime);
@@ -66,15 +66,17 @@ this.booking.email=JSON.parse(sessionStorage.getItem("user") || '').email;
     this.booking.totalCost=this.cost;
     this.booking.payment.cost=this.cost;
     this.booking.payment.paymentMode="online";
-    this.booking.payment.trxId=181;
+   // this.booking.payment.trxId=181;
     console.log("payment is",this.booking);
 sessionStorage.setItem('booking',JSON.stringify(this.booking));
 
+this.service.getTicketNo().subscribe((response: number) => {this.ticketno=response;
+  console.log('ticketno is',response);});
 
 this.service.addBookingDetails(this.booking)
   .subscribe((data: any) => console.log(data), (error: any) => console.log(error));  
 
-
+  
 
     this.temp=JSON.parse(sessionStorage.getItem("seat_booked_list") || '').split(',').map(Number);
 
@@ -85,8 +87,8 @@ for(let i=0;i<this.bookedseats;i++)
 {
   this.seat=new Seat();
 this.seat.seatType="ac";
-this.seat.ticketNo=this.booking.ticketNo;
-this.seat.seatId=this.no++;
+this.seat.ticketNo=this.ticketno;
+//this.seat.seatId=this.no++;
 this.seat.seatNo=this.temp[i];
 console.log('seats is',this.seat);
 
